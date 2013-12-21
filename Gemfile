@@ -54,6 +54,7 @@ group :development, :test do
   gem 'dotenv-rails'
 
   gem 'quiet_assets'
+  gem 'simplecov'
 end
 
 group :production do
