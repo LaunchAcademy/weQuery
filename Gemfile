@@ -50,6 +50,8 @@ group :development, :test do
   gem 'timecop'
   gem 'rake'
   gem 'coveralls', require: false
+
+  gem 'dotenv-rails'
 end
 
 group :production do

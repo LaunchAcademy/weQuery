@@ -63,6 +63,9 @@ GEM
       term-ansicolor
       thor
     diff-lcs (1.2.4)
+    dotenv (0.9.0)
+    dotenv-rails (0.9.0)
+      dotenv (= 0.9.0)
     erubis (2.7.0)
     execjs (2.0.2)
     factory_girl (4.2.0)
@@ -208,6 +211,7 @@ DEPENDENCIES
   capybara
   coffee-rails (~> 4.0.0)
   coveralls
+  dotenv-rails
   factory_girl
   jbuilder (~> 1.2)
   jquery-rails
