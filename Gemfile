@@ -52,6 +52,8 @@ group :development, :test do
   gem 'coveralls', require: false
 
   gem 'dotenv-rails'
+
+  gem 'quiet_assets'
 end
 
 group :production do
