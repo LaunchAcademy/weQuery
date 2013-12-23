@@ -55,6 +55,8 @@ group :development, :test do
 
   gem 'quiet_assets'
   gem 'simplecov'
+
+  gem 'spring'
 end
 
 group :production do
