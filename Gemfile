@@ -39,6 +39,12 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+group :development do
+  gem 'guard-rspec',
+    require: false
+  gem 'ruby_gntp'
+end
+
 group :development, :test do
   gem 'pry-rails'
   gem 'rspec-rails'
@@ -57,6 +63,7 @@ group :development, :test do
   gem 'simplecov'
 
   gem 'spring'
+  gem 'spring-commands-rspec'
 end
 
 group :production do
