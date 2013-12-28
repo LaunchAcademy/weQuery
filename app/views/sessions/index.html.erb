@@ -1,0 +1,9 @@
+<%- if !@sessions.empty? -%>
+  <ul>
+    <%- @sessions.each do |session| %>
+      <li>
+        <%= link_to session.name, session_questions_path(session) %>
+      </li>
+    <%- end -%>
+  </ul>
+<%- end -%>

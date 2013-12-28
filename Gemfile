@@ -34,6 +34,11 @@ gem 'omniauth-github'
 gem 'omniauth'
 gem 'anjlab-bootstrap-rails', '>= 3.0.0.0', :require => 'bootstrap-rails'
 
+gem 'inherited_resources'
+gem 'responders'
+
+gem 'kaminari'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
@@ -64,10 +69,6 @@ group :development, :test do
 
   gem 'spring'
   gem 'spring-commands-rspec'
-end
-
-group :production do
-  gem 'rails_12factor'
 end
 
 group :production do

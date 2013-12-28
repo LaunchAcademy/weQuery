@@ -2,6 +2,9 @@ class Question < ActiveRecord::Base
   belongs_to :user,
     inverse_of: :questions
 
+  belongs_to :session,
+    inverse_of: :questions
+
   has_many :votes,
     inverse_of: :question,
     dependent: :destroy

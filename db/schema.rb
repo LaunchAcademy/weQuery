@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131018141618) do
+ActiveRecord::Schema.define(version: 20131228170753) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,7 +23,18 @@ ActiveRecord::Schema.define(version: 20131018141618) do
     t.integer  "user_id",                 null: false
     t.string   "state"
     t.integer  "votes_count", default: 0, null: false
+    t.integer  "session_id",              null: false
   end
+
+  add_index "questions", ["session_id"], name: "index_questions_on_session_id", using: :btree
+
+  create_table "sessions", force: true do |t|
+    t.string   "name",       null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "sessions", ["name"], name: "index_sessions_on_name", unique: true, using: :btree
 
   create_table "users", force: true do |t|
     t.string   "provider"

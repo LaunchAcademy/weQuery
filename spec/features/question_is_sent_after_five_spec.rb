@@ -26,7 +26,7 @@ feature 'user upvotes a question', %Q{
       Vote.create!(question_id: new_question.id, user_id: n)
     end
     login_with_oauth
-    visit '/'
+    visit session_questions_path(question.session)
     click_on 'vote'
     expect(new_question.reload.state).to eql('sent')
   end

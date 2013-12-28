@@ -1,16 +1,23 @@
 class QuestionsController < ApplicationController
+  before_action :authenticate_user!
+
+  inherit_resources
+  belongs_to :session
 
   def index
     @question = Question.new
-    @questions = Question.non_expired
+    @questions = parent.questions.non_expired
   end
 
   def create
-    @question = Question.new(question_params)
-    @question.user = current_user
+    @question = Question.new(question_params) do |q|
+      q.session = parent
+      q.user = current_user
+    end
 
     if current_user && @question.save
-      redirect_to questions_path, notice: "Question successfully posted"
+      redirect_to session_questions_path(parent),
+        notice: "Question successfully posted"
     else
       @questions = Question.all
       render "index"
@@ -24,9 +31,9 @@ class QuestionsController < ApplicationController
     vote.question_id = question.id
     if vote.save
       question.check_state?
-      redirect_to questions_path
+      redirect_to session_questions_path(question.session)
     else
-      redirect_to questions_path
+      redirect_to session_questions_path(question.session)
     end
   end
 
