@@ -11,7 +11,8 @@ feature 'user submits a question', %Q{
 
   scenario 'logged-in user specifies a valid question' do
     login_with_oauth
-    visit '/'
+    session = FactoryGirl.create(:session)
+    visit session_questions_path(session)
     fill_in 'Body', with: "What is going on?"
     click_button 'Submit'
     expect(page).to have_content('Question successfully posted')
@@ -22,17 +23,19 @@ feature 'user submits a question', %Q{
     end
   end
 
+  let(:session) { FactoryGirl.create(:session) }
+
   scenario 'logged-in user does not specify valid information' do
     prev_count = Question.count
     login_with_oauth
-    visit '/'
+    visit session_questions_path(session)
     click_button 'Submit'
     expect(page).to have_content("can't be blank")
     expect(Question.count).to eql(prev_count)
   end
 
   scenario 'non-logged-in user cannot enter question' do
-    visit '/'
+    visit session_questions_path(session)
     expect(page).to_not have_content('Questions')
     expect(page).to_not have_selector("input[type=submit]")
   end

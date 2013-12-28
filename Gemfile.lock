@@ -85,10 +85,16 @@ GEM
     guard-rspec (4.2.0)
       guard (>= 2.1.1)
       rspec (>= 2.14, < 4.0)
+    has_scope (0.6.0.rc)
+      actionpack (>= 3.2, < 5)
+      activesupport (>= 3.2, < 5)
     hashie (2.0.5)
     hike (1.2.3)
     httpauth (0.2.0)
     i18n (0.6.5)
+    inherited_resources (1.4.1)
+      has_scope (~> 0.6.0.rc)
+      responders (~> 1.0.0.rc)
     jbuilder (1.5.2)
       activesupport (>= 3.0.0)
       multi_json (>= 1.2.0)
@@ -98,6 +104,9 @@ GEM
     json (1.8.0)
     jwt (0.1.8)
       multi_json (>= 1.5)
+    kaminari (0.15.0)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
     launchy (2.3.0)
       addressable (~> 2.3)
     listen (2.4.0)
@@ -168,6 +177,8 @@ GEM
       ffi (>= 0.5.0)
     rdoc (3.12.2)
       json (~> 1.4)
+    responders (1.0.0)
+      railties (>= 3.2, < 5)
     rest-client (1.6.7)
       mime-types (>= 1.16)
     rspec (2.14.1)
@@ -246,8 +257,10 @@ DEPENDENCIES
   dotenv-rails
   factory_girl
   guard-rspec
+  inherited_resources
   jbuilder (~> 1.2)
   jquery-rails
+  kaminari
   launchy
   omniauth
   omniauth-github
@@ -257,6 +270,7 @@ DEPENDENCIES
   rails (= 4.0.0)
   rails_12factor
   rake
+  responders
   rspec-rails
   ruby_gntp
   sass-rails (~> 4.0.0)

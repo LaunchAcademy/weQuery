@@ -21,5 +21,10 @@ FactoryGirl.define do
   factory :question do
     sequence(:body) {|n| "question body #{n}??" }
     association :user
+    association :session
+  end
+
+  factory :session do
+    sequence(:name) { |i| "session-#{i}"}
   end
 end
