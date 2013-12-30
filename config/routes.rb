@@ -1,5 +1,4 @@
 WeQuery::Application.routes.draw do
-  get '/dashboard', to: 'dashboard#index'
 
   resources :sessions, only: [:index] do
     resources :questions, only: [:index, :create]
@@ -15,6 +14,7 @@ WeQuery::Application.routes.draw do
 
   namespace :admin do
     resources :sessions
+    get 'dashboard', to: 'dashboard#index'
   end
 
   # namespace :admin

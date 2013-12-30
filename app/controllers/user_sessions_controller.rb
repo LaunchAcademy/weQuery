@@ -6,7 +6,7 @@ class UserSessionsController < ApplicationController
     user = User.find_by_provider_and_uid(auth["provider"], auth["uid"]) || User.create_from_omniauth(auth)
     session[:user_id] = user.id
     if user.admin
-      redirect_to dashboard_path, notice: "Signed in."
+      redirect_to admin_dashboard_path, notice: "Signed in."
     else
       redirect_to sessions_path, notice: "Signed in."
     end
