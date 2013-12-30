@@ -3,10 +3,14 @@ class QuestionsController < ApplicationController
 
   inherit_resources
   belongs_to :session
+  respond_to :json, only: :index
 
   def index
     @question = Question.new
     @questions = parent.questions.non_expired
+    super do |format|
+      format.json { render json: @questions }
+    end
   end
 
   def create

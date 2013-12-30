@@ -28,7 +28,7 @@
   setInterval(function(){getQuestions()},5000);
   function getQuestions()
   {
-    $.get("/api/questions", function(data){
+    $.get("<%= session_questions_path(parent, format: :json) %>", function(data){
       var htmlStuff = '';
       for(var i=0; i < data.questions.length; i++){
         if (data.questions[i].user_votes == true){
