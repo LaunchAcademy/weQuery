@@ -18,11 +18,13 @@ class CreateSessions < ActiveRecord::Migration
     Session.reset_column_information
     Question.reset_column_information
 
-    session = Session.find_or_create_by(name: 'Legacy Questions')
+    if Question.count > 0
+      session = Session.find_or_create_by(name: 'Legacy Questions')
 
-    Question.where(session_id: nil).find_each do |question|
-      question.session = session
-      question.save!
+      Question.where(session_id: nil).find_each do |question|
+        question.session = session
+        question.save!
+      end
     end
 
     change_column :questions, :session_id, :integer, null: false
