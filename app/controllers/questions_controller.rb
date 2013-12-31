@@ -2,7 +2,9 @@ class QuestionsController < ApplicationController
   before_action :authenticate_user!
 
   inherit_resources
-  belongs_to :session
+  belongs_to :session,
+    finder: :find_using_slug
+
   respond_to :json, only: :index
 
   def index

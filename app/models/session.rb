@@ -6,4 +6,6 @@ class Session < ActiveRecord::Base
   validates_uniqueness_of :name
 
   validates_presence_of :name
+
+  is_sluggable :name
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131228170753) do
+ActiveRecord::Schema.define(version: 20131231151426) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,11 +29,13 @@ ActiveRecord::Schema.define(version: 20131228170753) do
   add_index "questions", ["session_id"], name: "index_questions_on_session_id", using: :btree
 
   create_table "sessions", force: true do |t|
-    t.string   "name",       null: false
+    t.string   "name",        null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "cached_slug"
   end
 
+  add_index "sessions", ["cached_slug"], name: "index_sessions_on_cached_slug", using: :btree
   add_index "sessions", ["name"], name: "index_sessions_on_name", unique: true, using: :btree
 
   create_table "users", force: true do |t|
