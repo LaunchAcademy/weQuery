@@ -13,7 +13,11 @@ WeQuery::Application.routes.draw do
   end
 
   namespace :admin do
-    resources :sessions
+    resources :sessions do
+      resources :archives,
+        only: :create,
+        controller: :session_archives
+    end
     get 'dashboard', to: 'dashboard#index'
   end
 

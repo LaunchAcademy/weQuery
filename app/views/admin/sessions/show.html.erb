@@ -1,0 +1,5 @@
+<h1><%= @session.name %></h1>
+
+<%= button_to 'Archive',
+  admin_session_archives_path(@session),
+  method: 'post' %>

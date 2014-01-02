@@ -13,4 +13,18 @@ describe Session do
       expect(dupe_session).to_not be_valid
     end
   end
+
+  context 'archiving' do
+    it 'archives a given instance' do
+      session = FactoryGirl.create(:session)
+      expect(session.archive).to be_true
+      expect(Session.active).to_not include(session)
+    end
+
+    it 'archives only once' do
+      session = FactoryGirl.create(:session)
+      expect(session.archive).to be_true
+      expect(session.archive).to be_false
+    end
+  end
 end

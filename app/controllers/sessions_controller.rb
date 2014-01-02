@@ -5,6 +5,6 @@ class SessionsController < ApplicationController
 
   protected
   def collection
-    @sessions ||= end_of_association_chain.page(params[:page])
+    @sessions ||= end_of_association_chain.active.page(params[:page])
   end
 end

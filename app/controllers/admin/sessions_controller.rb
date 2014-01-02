@@ -9,6 +9,12 @@ module Admin
       end
     end
 
+    def show
+      @session = Session.find_using_slug!(params[:id])
+    end
+
+    protected
+
     def permitted_params
       params.permit(session: [:name])
     end
