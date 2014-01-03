@@ -46,6 +46,10 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+group :staging, :production do
+  gem 'rails_12factor'
+end
+
 group :development do
   gem 'guard-rspec',
     require: false
