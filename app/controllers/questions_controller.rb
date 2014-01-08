@@ -9,7 +9,7 @@ class QuestionsController < ApplicationController
 
   def index
     @question = Question.new
-    @questions = parent.questions.non_expired
+    questions
     super do |format|
       format.json { render json: @questions }
     end
@@ -25,7 +25,7 @@ class QuestionsController < ApplicationController
       redirect_to session_questions_path(parent),
         notice: "Question successfully posted"
     else
-      @questions = Question.all
+      questions
       render "index"
     end
   end
@@ -44,6 +44,9 @@ class QuestionsController < ApplicationController
   end
 
   protected
+  def questions
+    @questions ||= parent.questions.non_expired
+  end
 
   def question_params
     params.require(:question).permit(:body)
