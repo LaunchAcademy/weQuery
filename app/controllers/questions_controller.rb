@@ -30,19 +30,6 @@ class QuestionsController < ApplicationController
     end
   end
 
-  def vote
-    question = Question.find(params[:question_id])
-    vote = Vote.new()
-    vote.user_id = current_user.id
-    vote.question_id = question.id
-    if vote.save
-      question.check_state?
-      redirect_to session_questions_path(question.session)
-    else
-      redirect_to session_questions_path(question.session)
-    end
-  end
-
   protected
   def questions
     @questions ||= parent.questions.non_expired

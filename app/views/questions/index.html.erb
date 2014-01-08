@@ -12,9 +12,9 @@
       <%- @questions.each do |question| -%>
         <p>
         <% if question.votes.pluck(:user_id).include?(current_user.id) %>
-          <%= link_to '+1', question_vote_path(question.id),method: :post, id: 'vote', class: "btn btn-default btn-xs disabled" %>
+          <%= link_to '+1', question_votes_path(question),method: :post, id: 'vote', class: "btn btn-default btn-xs disabled" %>
         <% else %>
-          <%= link_to '+1', question_vote_path(question.id),method: :post, id: 'vote', class: "btn btn-default btn-xs" %>
+          <%= link_to '+1', question_votes_path(question),method: :post, id: 'vote', class: "btn btn-default btn-xs" %>
         <% end %>
         <%= question.votes.count %>
         <span class='question_state'><%= question.state %></span>

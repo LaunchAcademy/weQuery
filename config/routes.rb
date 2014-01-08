@@ -5,7 +5,7 @@ WeQuery::Application.routes.draw do
   end
 
   resources :questions do
-    post "vote"
+    resources :votes, only: [:create]
   end
 
   namespace :api do
