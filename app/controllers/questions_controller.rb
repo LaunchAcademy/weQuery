@@ -16,27 +16,28 @@ class QuestionsController < ApplicationController
   end
 
   def create
-    @question = Question.new(question_params) do |q|
-      q.session = parent
-      q.user = current_user
-    end
-
-    if current_user && @question.save
-      redirect_to session_questions_path(parent),
-        notice: "Question successfully posted"
-    else
-      questions
-      render "index"
+    create! do |success, failure|
+      success.html { redirect_to session_questions_path(parent) }
+      failure.html do
+        questions
+        render 'index'
+      end
     end
   end
 
   protected
+  def create_resource(question)
+    question.session = parent
+    question.user = current_user
+    super
+  end
+
   def questions
     @questions ||= parent.questions.non_expired
   end
 
-  def question_params
-    params.require(:question).permit(:body)
+  def permitted_params
+    params.permit(question: :body)
   end
 
 end

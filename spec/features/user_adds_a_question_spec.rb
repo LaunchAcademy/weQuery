@@ -15,7 +15,7 @@ feature 'user submits a question', %Q{
     visit session_questions_path(session)
     fill_in 'Body', with: "What is going on?"
     click_button 'Submit'
-    expect(page).to have_content('Question successfully posted')
+    expect(page).to have_content('Question created.')
     expect(page).to have_css('#questions', text: 'What is going on?')
 
     within '#questions' do
