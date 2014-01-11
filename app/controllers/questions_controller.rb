@@ -33,7 +33,7 @@ class QuestionsController < ApplicationController
   end
 
   def questions
-    @questions ||= parent.questions.non_expired
+    @questions ||= parent.questions
   end
 
   def permitted_params

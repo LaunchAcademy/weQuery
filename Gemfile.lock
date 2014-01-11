@@ -230,7 +230,6 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (~> 2.8)
-    state_machine (1.2.0)
     systemu (2.5.2)
     term-ansicolor (1.2.2)
       tins (~> 0.8)
@@ -290,7 +289,6 @@ DEPENDENCIES
   slugged
   spring
   spring-commands-rspec
-  state_machine
   timecop
   uglifier (>= 1.3.0)
   valid_attribute

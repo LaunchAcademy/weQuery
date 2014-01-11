@@ -14,7 +14,6 @@ class VotesController < ApplicationController
 
   def create_resource(obj)
     obj.user = current_user
-    super.tap { obj.question.check_state? }
-
+    super
   end
 end

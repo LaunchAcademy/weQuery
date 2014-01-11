@@ -4,9 +4,7 @@ module Admin
     before_action :is_admin?
 
     def index
-      @important_questions = Question.importance('important')
-      @sent_questions = Question.importance('sent')
-      @asked_questions = Question.importance('asked')
+
     end
 
     protected

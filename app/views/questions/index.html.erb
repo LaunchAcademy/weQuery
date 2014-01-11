@@ -17,7 +17,6 @@
           <%= link_to '+1', question_votes_path(question),method: :post, id: 'vote', class: "btn btn-default btn-xs" %>
         <% end %>
         <%= question.votes.count %>
-        <span class='question_state'><%= question.state %></span>
         <%= question.body %>
         </p>
       <%- end -%>
